@@ -1,0 +1,54 @@
+.form-terminal {
+  max-width: 280px;
+  padding: 15px;
+  margin: 0 auto;
+}
+
+.btn-galaxy { 
+  color: #FFFFFF; 
+  background-color: #7A44A3; 
+  border-color: #271138; 
+} 
+ 
+.btn-galaxy:hover, 
+.btn-galaxy:focus, 
+.btn-galaxy:active, 
+.btn-galaxy.active, 
+.open .dropdown-toggle.btn-galaxy { 
+  color: #FFFFFF; 
+  background-color: #58267D; 
+  border-color: #271138; 
+} 
+ 
+.btn-galaxy:active, 
+.btn-galaxy.active, 
+.open .dropdown-toggle.btn-galaxy { 
+  background-image: none; 
+} 
+ 
+.btn-galaxy.disabled, 
+.btn-galaxy[disabled], 
+fieldset[disabled] .btn-galaxy, 
+.btn-galaxy.disabled:hover, 
+.btn-galaxy[disabled]:hover, 
+fieldset[disabled] .btn-galaxy:hover, 
+.btn-galaxy.disabled:focus, 
+.btn-galaxy[disabled]:focus, 
+fieldset[disabled] .btn-galaxy:focus, 
+.btn-galaxy.disabled:active, 
+.btn-galaxy[disabled]:active, 
+fieldset[disabled] .btn-galaxy:active, 
+.btn-galaxy.disabled.active, 
+.btn-galaxy[disabled].active, 
+fieldset[disabled] .btn-galaxy.active { 
+  background-color: #7A44A3; 
+  border-color: #271138; 
+} 
+ 
+.btn-galaxy .badge { 
+  color: #7A44A3; 
+  background-color: #FFFFFF; 
+}
+
+.approved {color: green}
+.declined {color: red}
