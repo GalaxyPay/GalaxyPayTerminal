@@ -84,7 +84,7 @@ app.controller('modalCtrl', function ($scope, $http, $modal, $modalInstance, $wi
     };
 	
 	$scope.voided = function (reference, voided_id) {
-		if (voided_id !== null || $scope.history.some(function (elem) {
+		if (voided_id !== undefined || $scope.history.some(function (elem) {
 			return elem.voided_id === reference;
 			}))
 		{ return true; }
