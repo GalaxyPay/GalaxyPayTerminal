@@ -22,7 +22,7 @@ app.controller('gpCtrl', function ($scope, $modal) {
     };
 });
 
-app.controller('modalCtrl', function ($scope, $http, $modal, $modalInstance, $window) {
+app.controller('modalCtrl', function ($rootScope, $scope, $http, $modal, $modalInstance, $window) {
     $scope.process = function (request) {
         // POST
         var req = {
@@ -57,7 +57,7 @@ app.controller('modalCtrl', function ($scope, $http, $modal, $modalInstance, $wi
 
     $scope.cancelProcess = function () {
         $modalInstance.dismiss('cancel');
-        $window.location.reload();
+        $rootScope.request = {};
     };
 
     $scope.save = function () {
@@ -76,7 +76,7 @@ app.controller('modalCtrl', function ($scope, $http, $modal, $modalInstance, $wi
 
     $scope.ok = function () {
         $modalInstance.dismiss('cancel');
-        $window.location.reload();
+        $rootScope.request = {};
     };
 	
 	$scope.void = function (reference) {

@@ -44,8 +44,8 @@
 
                 <div class="form-group">
                     <div class="btn btn-group btn-group-justified">
-                        <a class="btn btn-galaxy" ng-click="open('swipe.html','sm','static')">Swipe</a>
-                        <a class="btn btn-galaxy" ng-click="open('manual.html','sm','static')">Manual</a>
+                        <a class="btn btn-galaxy" ng-click="open('swipe.html','sm','static')" ng-disabled="request.trancode == null">Swipe</a>
+                        <a class="btn btn-galaxy" ng-click="open('manual.html','sm','static')" ng-disabled="request.trancode == null">Manual</a>
                     </div>
                 </div>
                 <hr class="row" />
