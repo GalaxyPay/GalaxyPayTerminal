@@ -40,6 +40,7 @@ app.controller('modalCtrl', function ($rootScope, $scope, $http, $modal, $modalI
 				}
 				
 				sessionStorage.transactions = JSON.stringify(data) + sessionStorage.transactions;
+				$rootScope.history = JSON.parse('[' + sessionStorage.transactions + ']');
 			}
 		}).
 		error(function (data) {
