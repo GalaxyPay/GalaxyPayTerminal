@@ -24,6 +24,8 @@ app.controller('gpCtrl', function ($scope, $modal) {
 
 app.controller('modalCtrl', function ($rootScope, $scope, $http, $modal, $modalInstance, $window) {
     $scope.process = function (request) {
+		$rootScope.data = {};
+
         // POST
         var req = {
             method: 'POST',
