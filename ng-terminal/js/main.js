@@ -100,21 +100,20 @@ app.controller('modalCtrl', function ($rootScope, $scope, $document, $http, $mod
 
 app.directive('swipeReceiver', ['$document', function ($document) {
     return {
-        link: function(scope, element, attrs) {
-          scope.swipeData = "";
+        link: function(scope) {
+          scope.request.track2 = "";
           $document.on('keypress', function(event) {
             event.preventDefault();
             if(event.which == 13) { // On ENTER submit parent form
               $document.off('keypress');
-              element[0].form.submit();
+              scope.process(scope.request);
             }
             else if (event.which == 27) // On ESC cancel swipe
             {
               scope.cancelProcess();
             }
             else {
-              scope.swipeData += String.fromCharCode(event.which);
-              element.val(scope.swipeData);
+              scope.request.track2 += String.fromCharCode(event.which);
             }
           });
         }
