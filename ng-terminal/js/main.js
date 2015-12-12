@@ -105,7 +105,7 @@ app.directive('swipeReceiver', ['$document', function ($document) {
           $document.on('keypress', function(event) {
             event.preventDefault();
             if(event.which == 13) { // On ENTER submit parent form
-              $document.off('keydown');
+              $document.off('keypress');
               element[0].form.submit();
             }
             else if (event.which == 27) // On ESC cancel swipe
