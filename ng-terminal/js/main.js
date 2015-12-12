@@ -102,7 +102,7 @@ app.directive('swipeReceiver', ['$document', function ($document) {
     return {
         link: function(scope, element, attrs) {
           scope.swipeData = "";
-          $document.on('keydown', function(event) {
+          $document.on('keypress', function(event) {
             event.preventDefault();
             if(event.which == 13) { // On ENTER submit parent form
               $document.off('keydown');
