@@ -22,7 +22,7 @@ app.controller('gpCtrl', function ($scope, $modal) {
     };
 });
 
-app.controller('modalCtrl', function ($rootScope, $scope, $http, $modal, $modalInstance, $window) {
+app.controller('modalCtrl', function ($rootScope, $scope, $document, $http, $modal, $modalInstance, $window) {
     $scope.process = function (request) {
 		    $rootScope.data = {};
         // POST
@@ -57,8 +57,9 @@ app.controller('modalCtrl', function ($rootScope, $scope, $http, $modal, $modalI
     };
 
     $scope.cancelProcess = function () {
-        $modalInstance.dismiss('cancel');
-        $rootScope.request = {};
+      $document.off('keydown');
+      $modalInstance.dismiss('cancel');
+      $rootScope.request = {};
     };
 
     $scope.save = function () {
@@ -106,6 +107,10 @@ app.directive('swipeReceiver', ['$document', function ($document) {
             if(event.which == 13) { // On ENTER submit parent form
               $document.off('keydown');
               element[0].form.submit();
+            }
+            else if (event.which == 27) // On ESC cancel swipe
+            {
+              scope.cancelProcess();
             }
             else {
               scope.swipeData += String.fromCharCode(event.which);
