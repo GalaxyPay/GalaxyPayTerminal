@@ -1,12 +1,9 @@
-﻿<form ng-submit="process(request)">
-	<div class="modal-header">
-		<h4 class="modal-title">Swipe Card to Process</h4>
-	</div>
-	<div class="modal-body">
-		<img class="img-responsive col-md-8 col-md-offset-2" src="img/swipe.png" />
-		<input type="password" ng-model="request.track2" class="form-control" autofocus />
-	</div>
-	<div class="modal-footer">
-		<button type='button' class="btn btn-default" ng-click="cancelProcess()">Cancel</button>
-	</div>
-</form>
+<div class="modal-header">
+	<h4 class="modal-title">Swipe Card to Process</h4>
+</div>
+<div class="modal-body">
+	<img class="img-responsive" src="img/swipe.png" swipe-receiver />
+</div>
+<div class="modal-footer">
+	<button type='button' class="btn btn-default" ng-click="cancelProcess()">Cancel</button>
+</div>
