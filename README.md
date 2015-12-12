@@ -1,6 +1,8 @@
 # Galaxy-Pay AngularJS Terminal [![MIT License](http://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/GalaxyPay/GalaxyPayTerminal/master/LICENSE)
 A client-side web terminal for Galaxy-Pay!
 
+Head here to check it out: http://terminal.galaxy-pay.com/
+
 ![Galay-Pay Terminal](http://i.imgur.com/kXIeRa3.png)
 
 ## Contributing
