@@ -57,7 +57,7 @@ app.controller('modalCtrl', function ($rootScope, $scope, $document, $http, $mod
     };
 
     $scope.cancelProcess = function () {
-      $document.off('keydown');
+      $document.off('keypress');
       $modalInstance.dismiss('cancel');
       $rootScope.request = {};
     };
