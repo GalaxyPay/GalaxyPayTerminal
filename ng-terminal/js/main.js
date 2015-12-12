@@ -24,8 +24,7 @@ app.controller('gpCtrl', function ($scope, $modal) {
 
 app.controller('modalCtrl', function ($rootScope, $scope, $http, $modal, $modalInstance, $window) {
     $scope.process = function (request) {
-		$rootScope.data = {};
-
+		    $rootScope.data = {};
         // POST
         var req = {
             method: 'POST',
@@ -33,29 +32,28 @@ app.controller('modalCtrl', function ($rootScope, $scope, $http, $modal, $modalI
             headers: $scope.header,
             data: request
         }
-        $http(req).
-		success(function (data) {
-			$scope.data.response = data;
-			if (data.reference != null) {
-				if (sessionStorage.transactions != '') {
-					sessionStorage.transactions = ',' + sessionStorage.transactions;
-				}
-				
-				sessionStorage.transactions = JSON.stringify(data) + sessionStorage.transactions;
-				$rootScope.history = JSON.parse('[' + sessionStorage.transactions + ']');
-			}
-		}).
-		error(function (data) {
-			$scope.data.response = data;
-		});
-        $modalInstance.dismiss('process');
+        $http(req).success(function (data) {
+  			$scope.data.response = data;
+  			if (data.reference != null) {
+  				if (sessionStorage.transactions != '') {
+  					sessionStorage.transactions = ',' + sessionStorage.transactions;
+  				}
+  				sessionStorage.transactions = JSON.stringify(data) + sessionStorage.transactions;
+  				$rootScope.history = JSON.parse('[' + sessionStorage.transactions + ']');
+  			}
+  		}).
+  		error(function (data) {
+  			$scope.data.response = data;
+  		});
 
-        $modal.open({
-            templateUrl: 'response.html',
-            controller: 'modalCtrl',
-            size: 'sm',
-            backdrop: 'static'
-        });
+      $modalInstance.dismiss('process');
+
+      $modal.open({
+          templateUrl: 'response.html',
+          controller: 'modalCtrl',
+          size: 'sm',
+          backdrop: 'static'
+      });
     };
 
     $scope.cancelProcess = function () {
@@ -64,34 +62,59 @@ app.controller('modalCtrl', function ($rootScope, $scope, $http, $modal, $modalI
     };
 
     $scope.save = function () {
-        // save to local storage
-        localStorage.api_url = $scope.api.url;
-        localStorage.authorization = $scope.header.Authorization;
-        $modalInstance.dismiss('save');
+      // save to local storage
+      localStorage.api_url = $scope.api.url;
+      localStorage.authorization = $scope.header.Authorization;
+      $modalInstance.dismiss('save');
     };
 
     $scope.cancelSave = function () {
-        // revert to stored values
-        $modalInstance.dismiss('cancel');
-        $scope.api.url = localStorage.api_url || '';
-        $scope.header.Authorization = localStorage.authorization || '';
+      // revert to stored values
+      $modalInstance.dismiss('cancel');
+      $scope.api.url = localStorage.api_url || '';
+      $scope.header.Authorization = localStorage.authorization || '';
     };
 
     $scope.ok = function () {
-        $modalInstance.dismiss('cancel');
-        $rootScope.request = {};
+      $modalInstance.dismiss('cancel');
+      $rootScope.request = {};
     };
-	
-	$scope.void = function (reference) {
-		$scope.process('{trancode:"void",reference:' + reference + '}')
+
+    $scope.void = function (reference) {
+		  $scope.process('{trancode:"void",reference:' + reference + '}')
     };
-	
-	$scope.voided = function (reference, voided_id) {
-		if (voided_id !== undefined || $scope.history.some(function (elem) {
-			return elem.voided_id === reference;
-			}))
-		{ return true; }
-		else { return false; }
+
+    $scope.voided = function (reference, voided_id) {
+      if (voided_id !== undefined || $scope.history.some(function (elem) {
+			     return elem.voided_id === reference;
+			})) {
+        return true;
+      }
+		  else {
+        return false;
+      }
     };
 
 });
+
+app.directive('swipeReceiver', ['$document', function ($document) {
+    return {
+        link: function(scope, element, attrs) {
+          scope.swipeData = "";
+          $document.on('keydown', function(event) {
+            event.preventDefault();
+            if(event.which == 13) { // On ENTER submit parent form
+              $document.off('keydown');
+              var form = element[0].form;
+              form.submit();
+            }
+            else {
+              scope.swipeData += String.fromCharCode(event.which);
+              element.val(scope.swipeData);
+            }
+          });
+        }
+      }
+    }
+  ]
+);
