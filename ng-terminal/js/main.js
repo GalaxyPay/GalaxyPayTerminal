@@ -1,10 +1,10 @@
 ﻿var app = angular.module('gpTerminal', ['ui.bootstrap']);
 
 app.run(function ($rootScope, $http) {
-    $rootScope.request = {}
-    $rootScope.data = {};
-    $rootScope.api = { url: localStorage.api_url || '' };
-    $rootScope.header = { Authorization: localStorage.authorization || '' };
+  $rootScope.request = {}
+  $rootScope.data = {};
+  $rootScope.api = { url: localStorage.api_url || '' };
+  $rootScope.header = { Authorization: localStorage.authorization || '' };
 	if (sessionStorage.transactions === undefined) {
 		sessionStorage.transactions = '';
 	};
@@ -105,8 +105,7 @@ app.directive('swipeReceiver', ['$document', function ($document) {
             event.preventDefault();
             if(event.which == 13) { // On ENTER submit parent form
               $document.off('keydown');
-              var form = element[0].form;
-              form.submit();
+              element[0].form.submit();
             }
             else {
               scope.swipeData += String.fromCharCode(event.which);
